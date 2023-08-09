@@ -1,0 +1,28 @@
+[[extend 'layout.html']]
+
+<div class="section">
+  <div class="vars mb-5">
+      <h1 class="subtitle is-spaced has-text-centered">[[=message]]</h1>
+  </div>
+  <head>
+    <meta charset='utf-8'/>
+    <section>
+      <a class="button is-link mr-3" href="[[=URL('create_event')]]">
+        <span>Create New Event</span>
+      </a>
+      <a class="button is-success mr-3" href="[[=URL('search_events')]]">
+        <span>Search Your Events</span>
+      </a>
+      <a class="button is-primary is-pulled-right" href="[[=URL('get_invitations')]]">
+        <span>Incoming Invitations ([[=invite_count]])</span>
+      </a>
+    </section>
+    <br> 
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+    <script src="../static/js/index.js"></script>
+  </head>
+  <body>
+    <div id='calendar'></div>
+  </body>
+
+</div>

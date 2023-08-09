@@ -1,0 +1,40 @@
+[[extend 'layout.html']]
+
+<div class="section mx-6" id="vue" v-cloak>
+
+    <div class="block">
+        <a class="button is-info" href="[[=URL('view_event',event_id)]]">
+            <span>Back to Event</span>
+        </a>
+    </div>
+    <div class="block">
+        <h1 class="title">Invite Users</h1>
+    </div>
+    
+    <div class="field">
+        <p class="control has-icons-right">
+            <input class="input" v-model="text" v-on:keyup="filter_users()" placeholder="Search users by name...">
+            <span class="icon is-small is-right is-clickable">
+                <i class="fa fa-times-circle" v-on:click="clear()"></i>
+            </span>
+        </p>
+    </div>
+
+    <div class="block" v-if="text.length>0" v-for="user in users">
+        <a onclick="inviteSent()" v-bind:href="'/[[=request.app_name]]/invite_user/[[=event_id]]/'+user.username">{{user.username}}</a>
+    </div>
+    <div class="block" v-if="text.length==0" v-for="user in users">
+        <a onclick="inviteSent()"v-bind:href="'/[[=request.app_name]]/invite_user/[[=event_id]]/'+user.username" method="POST">{{user.username}}</a>
+    </div>
+    <script>
+        function inviteSent() {
+            alert("Invite sent!");
+        }
+    </script>
+</div>
+
+[[block page_scripts]]
+<!-- Loads the index-specific js for Vue -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
+<script src="js/search_users.js"></script>
+[[end]]

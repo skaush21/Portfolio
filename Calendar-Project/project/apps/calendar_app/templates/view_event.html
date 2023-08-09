@@ -1,0 +1,35 @@
+[[extend 'layout.html']]
+
+<div class="section">
+    <div class="block">
+        <a class="button is-info" href="[[=URL('index')]]">
+            <span>Back</span>
+        </a>
+    </div>
+    [[for event in events:]]
+    <div class="block">
+        <h1 class="title is-1">[[=event.name]]</h1>
+    </div>
+    <div class="block">
+    <h1 class="title is-4">Time</h1>
+        <div>[[=event.event_time]]</div>
+    </div>
+    <div class="block">
+        <h1 class="title is-4">Location</h1>
+        <div>[[=event.location]]</div>
+    </div>
+    <div class="block">
+    <h1 class="title is-4">Event Description</h1>
+    <div>[[=event.description]]</div>
+    </div>
+    <a class="button is-primary" href="[[=URL('edit_event', event.id)]]">
+        <span>Edit This Event</span>
+    </a>
+    <a class="button is-danger" href="[[=URL('delete_event', event.id)]]">
+        <span>Delete This Event</span>
+    </a>
+    <a class="button is-success" href="[[=URL('search_users', event.id)]]">
+        <span>Invite Users</span>
+    </a>
+    [[pass]]
+</div>
